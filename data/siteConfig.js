@@ -117,7 +117,7 @@ module.exports = {
       url: '/',
     },
     {
-      label: 'Portifolio(WIP)',
+      label: 'Portfolio(WIP)',
       url: '/portifolio',
     },
     {
