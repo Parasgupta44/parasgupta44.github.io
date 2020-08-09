@@ -5,7 +5,7 @@ module.exports = {
     title: config.siteTitle,
     author: config.authorName,
     description: config.siteDescription,
-    // siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    // siteUrl: `https://guptaparas.in/`,
     // social: {
     //   twitter: `parasgupta`,
     // },

@@ -1,6 +1,6 @@
 module.exports = {
   siteTitle: "Hi! I'm Paras!",
-  siteDescription: `Create your online curriculum in just a few minutes with this starter`,
+  siteDescription: `Create your online curriculum in just a few minutes with this template`,
   keyWords: ['gatsbyjs', 'react', 'curriculum'],
   authorName: 'Paras Gupta',
   twitterUsername: 'Paras986745',
@@ -27,11 +27,11 @@ module.exports = {
     },
     {
       name: 'ReactJS',
-      level: 60,
+      level: 55,
     },
     {
       name: 'Git',
-      level: 70,
+      level: 50,
     },
     /* more skills here */
   ],
@@ -46,7 +46,7 @@ module.exports = {
       duration: '6 months',
       occupation: 'Software Developer Intern',
       description:
-        'Was part of the Corporate Treasury team working on a live project invloving technologies like React, Flask, and FastApi.',
+        'Was part of the Corporate Treasury team. Worked on a project from scratch invloving technologies like React, Flask, and FastApi. DevOps cycle was followd to continuosly push the builds to the servers',
     },
     {
       company: 'Punjab Engineering College, Chandigarh',
@@ -58,28 +58,6 @@ module.exports = {
       occupation: '4th year Undergrad',
       description: 'Pursuing B.Tech in Computer Science.',
     },
-    // {
-    //   company: 'Anapro',
-    //   begin: {
-    //     month: 'dec',
-    //     year: '2016',
-    //   },
-    //   duration: '1 yr e 5 mos',
-    //   occupation: 'Fullstack developer',
-    //   description:
-    //     'Development and maintenance, corrective and preventive, of web applications for the real estate market.',
-    // },
-    // {
-    //   company: 'Anapro',
-    //   begin: {
-    //     month: 'set',
-    //     year: '2012',
-    //   },
-    //   duration: '4 yrs e 3 mos',
-    //   occupation: 'Support Technician',
-    //   description:
-    //     'Responsible for the implementation and parameterization of the system, training and customer support. Acting also in person in real estate launches guaranteeing the success and good use of the tool.',
-    // },
   ],
   portifolio: [
     // {
@@ -117,7 +95,7 @@ module.exports = {
       url: '/',
     },
     {
-      label: 'Portfolio(WIP)',
+      label: 'Portfolio',
       url: '/portifolio',
     },
     {
