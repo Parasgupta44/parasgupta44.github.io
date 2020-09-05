@@ -46,7 +46,7 @@ module.exports = {
       duration: '6 months',
       occupation: 'Software Developer Intern',
       description:
-        'Was part of the Corporate Treasury team. Worked on a project from scratch invloving technologies like React, Flask, and FastApi. DevOps cycle was followd to continuosly push the builds to the servers',
+        'Was part of the Corporate Treasury team. Worked on a project from scratch invloving technologies like React, Flask, and FastApi. DevOps cycle was followed to continuously push the builds to the servers.',
     },
     {
       company: 'Punjab Engineering College, Chandigarh',
