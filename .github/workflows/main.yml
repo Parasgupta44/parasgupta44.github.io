@@ -7,6 +7,8 @@ on:
 
 jobs:
   build:
+    env:
+      KEY_VAL: ${{ secrets.key_val }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
