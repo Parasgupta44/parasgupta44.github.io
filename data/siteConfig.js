@@ -1,5 +1,5 @@
 module.exports = {
-  siteTitle: "Hi! I'm Paras!",
+  siteTitle: 'Hey, Welcome!',
   siteDescription: `Create your online curriculum in just a few minutes with this template`,
   keyWords: ['gatsbyjs', 'react', 'curriculum'],
   authorName: 'Paras Gupta',
@@ -60,6 +60,12 @@ module.exports = {
     },
   ],
   portifolio: [
+    {
+      image: '/images/Resume_SS.PNG',
+      description: 'Resume - Paras Gupta',
+      url:
+        'https://drive.google.com/file/d/1xoj1ZCkKUoYqGcwqfh9rtA4om8p__2_L/view?usp=sharing',
+    },
     // {
     //   image: '/images/gatsby-starter-cv.png',
     //   description: 'Gatsby starter CV template',
@@ -99,7 +105,7 @@ module.exports = {
       url: '/portifolio',
     },
     {
-      label: 'Blog(WIP)',
+      label: 'Blog',
       url: '/blogIndex',
     },
   ],

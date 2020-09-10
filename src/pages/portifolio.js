@@ -40,12 +40,7 @@ const Portifolio = ({ className, location }) => {
     <Layout location={location}>
       <SEO title={title} keywords={keywords} />
 
-      <Hero
-        heroImg={withPrefix(
-          '/images/pierre-chatel-innocenti-W5INoOK-5eI-unsplash.jpg'
-        )}
-        title={title}
-      />
+      <Hero heroImg={withPrefix('/images/starryNight.jpg')} title={title} />
 
       <Wrapper className={className}>
         <Container className="page-content" fluid>
