@@ -63,7 +63,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: config.siteTitle,
+        name: "Hey, It's Paras",
         short_name: config.siteTitle,
         start_url: config.pathPrefix,
         // config.pathPrefix
@@ -73,6 +73,7 @@ module.exports = {
         icon: config.icon,
       },
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
@@ -81,8 +82,5 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

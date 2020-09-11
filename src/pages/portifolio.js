@@ -35,10 +35,11 @@ const JobCard = styled.a`
 
 const Portifolio = ({ className, location }) => {
   const title = 'Portfolio'
-  const { keywords, portifolio } = siteConfig
+  const { keyWords, portifolio } = siteConfig
+  console.log(keyWords)
   return (
     <Layout location={location}>
-      <SEO title={title} keywords={keywords} />
+      <SEO title={title} keywords={keyWords} />
 
       <Hero heroImg={withPrefix('/images/starryNight.jpg')} title={title} />
 

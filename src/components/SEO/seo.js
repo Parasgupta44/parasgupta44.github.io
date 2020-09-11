@@ -71,6 +71,7 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
+  description: 'Personal Portfolio / Blog of Paras Gupta.',
 }
 
 SEO.propTypes = {

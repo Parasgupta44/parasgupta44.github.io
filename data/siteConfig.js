@@ -1,7 +1,15 @@
 module.exports = {
-  siteTitle: 'Hey, Welcome!',
-  siteDescription: `Create your online curriculum in just a few minutes with this template`,
-  keyWords: ['gatsbyjs', 'react', 'curriculum'],
+  siteTitle: "Hey, It's Paras!",
+  siteDescription: `Personal Portfolio / Blog of Paras Gupta.`,
+  keyWords: [
+    'gatsbyjs',
+    'react',
+    'paras',
+    'portfolio',
+    'resume',
+    'blog',
+    'Paras Gupta',
+  ],
   authorName: 'Paras Gupta',
   twitterUsername: 'Paras986745',
   githubUsername: 'Parasgupta44',
@@ -71,11 +79,6 @@ module.exports = {
     //   description: 'Gatsby starter CV template',
     //   url:
     //     'https://www.gatsbyjs.org/starters/santosfrancisco/gatsby-starter-cv/',
-    // },
-    // {
-    //   image: '/images/awesome-grid.png',
-    //   description: 'Responsive grid for ReactJS',
-    //   url: 'https://github.com/santosfrancisco/react-awesome-styled-grid',
     // },
     /* more portifolio items here */
   ],

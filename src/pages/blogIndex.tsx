@@ -1,11 +1,13 @@
 // Gatsby supports TypeScript natively!
-import React from "react"
-import { PageProps, Link, graphql } from "gatsby"
+import React from 'react'
+import { PageProps, Link, graphql } from 'gatsby'
 
-import Bio from "../components/blog-components/bio"
-import Layout from "../components/blog-components/layout"
-import SEO from "../components/blog-components/seo"
-import { rhythm } from "../utils/typography"
+import Bio from '../components/blog-components/bio'
+import Layout from '../components/blog-components/layout'
+import SEO from '../components/blog-components/seo'
+import { rhythm } from '../utils/typography'
+
+import ThemeProvider from '../components/blog-components/ThemeProvider'
 
 type Data = {
   site: {
@@ -36,36 +38,54 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
 
   return (
     // <Link to="/blogIndex">Blog</Link>
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
-    </Layout>
+    <ThemeProvider>
+      <Layout location={location} title={siteTitle}>
+        <SEO
+          title="All posts"
+          description="All posts of Paras Gupta's personal portfolio / blog."
+        />
+        <Bio />
+        {posts.map(({ node }) => {
+          const title = node.frontmatter.title || node.fields.slug
+          return (
+            <article key={node.fields.slug}>
+              <header>
+                <h2
+                  css={{
+                    marginBottom: rhythm(1 / 4),
+                  }}
+                >
+                  <Link
+                    style={{
+                      boxShadow: `none`,
+                      color: '#ed097b',
+                      fontFamily: `Montserrat, sans-serif`,
+                    }}
+                    to={node.fields.slug}
+                  >
+                    {title}
+                  </Link>
+                </h2>
+                <small>{node.frontmatter.date}. &nbsp;</small>
+                <p style={{ display: `inline` }}>
+                  <b>
+                    <small> 🐱‍👤 {node.timeToRead} min read</small>
+                  </b>
+                </p>
+              </header>
+              <section>
+                <p
+                  css={{ marginBottom: rhythm(1.5) }}
+                  dangerouslySetInnerHTML={{
+                    __html: node.frontmatter.description || node.excerpt,
+                  }}
+                />
+              </section>
+            </article>
+          )
+        })}
+      </Layout>
+    </ThemeProvider>
   )
 }
 
@@ -90,6 +110,7 @@ export const pageQuery = graphql`
             title
             description
           }
+          timeToRead
         }
       }
     }
