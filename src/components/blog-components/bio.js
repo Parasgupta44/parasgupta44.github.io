@@ -58,7 +58,7 @@ const Bio = () => {
 
       <p style={{ maxWidth: 310 }}>
         Personal blog by <Link to="/">Paras Gupta</Link>. Trying&nbsp;to write
-        some stuff 🐱‍💻
+        some stuff ✍🏼
       </p>
     </div>
   )

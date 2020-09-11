@@ -51,7 +51,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                       fontWeight: 'bold',
                     }}
                   >
-                    {post.timeToRead} min read 🐱‍👤
+                    {post.timeToRead} min read ☕
                   </p>
                 </header>
                 <div

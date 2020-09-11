@@ -69,7 +69,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
                 <small>{node.frontmatter.date}. &nbsp;</small>
                 <p style={{ display: `inline` }}>
                   <b>
-                    <small> 🐱‍👤 {node.timeToRead} min read</small>
+                    <small> ☕ {node.timeToRead} min read</small>
                   </b>
                 </p>
               </header>
