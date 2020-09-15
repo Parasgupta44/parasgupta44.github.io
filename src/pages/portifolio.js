@@ -36,7 +36,6 @@ const JobCard = styled.a`
 const Portifolio = ({ className, location }) => {
   const title = 'Portfolio'
   const { keyWords, portifolio } = siteConfig
-  console.log(keyWords)
   return (
     <Layout location={location}>
       <SEO title={title} keywords={keyWords} />

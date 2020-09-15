@@ -2,6 +2,7 @@
 title: Neural Style Transfer
 date: '2020-09-09T22:00:03.284Z'
 description: 'Some example outputs for Neural Style Transfer Technique.'
+categories: ['neural style transfer, pytorch']
 ---
 
 This post contains some outputs after applying neural style transfer techniques on them.

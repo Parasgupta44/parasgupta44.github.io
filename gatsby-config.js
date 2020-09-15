@@ -5,7 +5,7 @@ module.exports = {
     title: config.siteTitle,
     author: config.authorName,
     description: config.siteDescription,
-    // siteUrl: `https://guptaparas.in/`,
+    siteUrl: config.siteUrl,
     // social: {
     //   twitter: `parasgupta`,
     // },
@@ -82,5 +82,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    `gatsby-plugin-sitemap`,
   ],
 }

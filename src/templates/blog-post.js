@@ -57,11 +57,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 <div
                   css={{
                     a: {
-                      borderBottomColor: getTheme(theme).color,
-                      '&:hover, &:focus': {
-                        borderBottomStyle: 'solid',
-                        borderBottomColor: getTheme(theme).color,
-                      },
+                      // borderBottomColor: getTheme(theme).color,
+                      // '&:hover, &:focus': {
+                      //   borderBottomStyle: 'solid',
+                      //   borderBottomColor: getTheme(theme).color,
+                      // },
                     },
                   }}
                   dangerouslySetInnerHTML={{ __html: post.html }}
@@ -129,6 +129,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        categories
       }
       timeToRead
     }
