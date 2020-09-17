@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa"
-import { config } from 'react-awesome-styled-grid';
+import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa'
+import { config } from 'react-awesome-styled-grid'
 import siteConfig from '../../../data/siteConfig'
 
 const Link = styled(({ className, icon: Icon, color, ...props }) => (
-  <a 
+  <a
+    style={{ color: 'white' }}
     className={className}
-    target='_blank'
+    target="_blank"
     rel="noopener noreferrer"
     {...props}
   >
@@ -17,14 +18,10 @@ const Link = styled(({ className, icon: Icon, color, ...props }) => (
   & + & {
     margin-left: 24px;
   }
-`;
+`
 
 const Footer = ({ className }) => {
-  const {
-    twitter,
-    linkedin,
-    github,
-  } = siteConfig.social
+  const { twitter, linkedin, github } = siteConfig.social
   return (
     <footer className={className}>
       {`© ${new Date().getFullYear()} ${siteConfig.authorName}`}
@@ -38,7 +35,7 @@ const Footer = ({ className }) => {
 }
 
 export default styled(Footer)`
-  min-height: 93px; 
+  min-height: 93px;
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
@@ -51,4 +48,4 @@ export default styled(Footer)`
   ${props => config(props).media.sm`
     flex-direction: row;
   `}
-`;
+`
