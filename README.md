@@ -1,7 +1,11 @@
-## A simple portfolio site build using Gatsby.
+## A simple portfolio site built using Gatsby.
 
 Theme by [santosfrancisco](https://github.com/santosfrancisco).
 Go to the [site](https://guptaparas.in/).
+
+---
+
+Development happens on `dev` and once the deployment has to be rolled out, the build is pushed to `master`.
 
 ---
 
