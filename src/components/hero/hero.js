@@ -22,6 +22,7 @@ const HeroTitle = styled.h1`
   font-size: 3rem;
   margin: 10px 60px;
   color: #fff;
+  /* font-family: 'Apple Chancery'; */
   text-shadow: 1px 1px 4px rgba(34, 34, 34, 0.6);
 `
 
@@ -34,7 +35,8 @@ const Hero = ({ className, title }) => (
 )
 
 export default styled(Hero)`
-  ${p => `background-image: url(${p.heroImg || withPrefix(siteConfig.siteCover)});`}
+  ${p =>
+    `background-image: url(${p.heroImg || withPrefix(siteConfig.siteCover)});`}
   height: 70vh;
   background-attachment: fixed;
   background-position: bottom center;
