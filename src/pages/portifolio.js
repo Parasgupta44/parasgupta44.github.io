@@ -51,6 +51,7 @@ const Portifolio = ({ className, location }) => {
                   as={job.url ? 'a' : 'div'}
                   href={job.url}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image src={withPrefix(job.image)} />
                   <p>{job.description}</p>

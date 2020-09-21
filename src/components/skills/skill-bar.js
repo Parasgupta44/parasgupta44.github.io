@@ -5,8 +5,8 @@ const SkillBar = ({ className, name, level }) => {
   return (
     <div className={className}>
       <label htmlFor={`${name}-bar`}>{name}</label>
-      <div id={`${name}-bar`} className='skill__bar'>
-        <div className='skill__level animate-on-scroll'></div>
+      <div id={`${name}-bar`} className="skill__bar">
+        <div className="skill__level animate-on-scroll"></div>
       </div>
     </div>
   )
@@ -28,7 +28,7 @@ export default styled(SkillBar)`
     height: 8px;
 
     &.is-visible {
-      transition: width .5s ease-in;
+      transition: width 0.5s ease-in;
       width: ${p => p.level || 0}%;
     }
   }

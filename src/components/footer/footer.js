@@ -6,7 +6,7 @@ import siteConfig from '../../../data/siteConfig'
 
 const Link = styled(({ className, icon: Icon, color, ...props }) => (
   <a
-    style={{ color: 'white' }}
+    style={{ color: window.__theme === 'light' ? 'white' : '#212121' }}
     className={className}
     target="_blank"
     rel="noopener noreferrer"
