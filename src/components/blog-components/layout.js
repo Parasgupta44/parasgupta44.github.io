@@ -144,38 +144,42 @@ const Layout = ({ location, title, children }) => {
       </header>
       <main>{children}</main>
       <footer>
-        © {new Date().getFullYear()}
-        {` `}
-        <Link to="/" style={{ boxShadow: '0 0 0 0 currentColor' }}>
-          <FaHome />
-        </Link>
-        {` `}
-        <a
-          style={{ boxShadow: '0 0 0 0 currentColor' }}
-          href={config.social.linkedin}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <FaLinkedin />
-        </a>
-        {` `}
-        <a
-          style={{ boxShadow: '0 0 0 0 currentColor' }}
-          href={config.social.github}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <FaGithub />
-        </a>
-        {` `}
-        <a
-          style={{ boxShadow: '0 0 0 0 currentColor' }}
-          href={config.social.twitter}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <FaTwitter />
-        </a>
+        <div style={{ float: 'left' }}>
+          © {new Date().getFullYear()}
+          {` `}
+        </div>
+        <div style={{ float: 'right' }}>
+          <Link to="/" style={{ boxShadow: '0 0 0 0 currentColor' }}>
+            <FaHome />
+          </Link>
+          {` `}
+          <a
+            style={{ boxShadow: '0 0 0 0 currentColor' }}
+            href={config.social.linkedin}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <FaLinkedin />
+          </a>
+          {` `}
+          <a
+            style={{ boxShadow: '0 0 0 0 currentColor' }}
+            href={config.social.github}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <FaGithub />
+          </a>
+          {` `}
+          <a
+            style={{ boxShadow: '0 0 0 0 currentColor' }}
+            href={config.social.twitter}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <FaTwitter />
+          </a>
+        </div>
       </footer>
     </div>
   )
