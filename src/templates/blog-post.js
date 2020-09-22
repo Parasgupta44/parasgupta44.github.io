@@ -57,11 +57,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 <div
                   css={{
                     a: {
-                      // borderBottomColor: getTheme(theme).color,
-                      // '&:hover, &:focus': {
-                      //   borderBottomStyle: 'solid',
-                      //   borderBottomColor: getTheme(theme).color,
-                      // },
+                      boxShadow: '0 0 0 0 currentColor',
+                      borderBottomColor: getTheme(theme).color,
+                      '&:hover, &:focus': {
+                        borderBottomStyle: 'solid',
+                        borderBottomColor: getTheme(theme).color,
+                      },
                     },
                   }}
                   dangerouslySetInnerHTML={{ __html: post.html }}

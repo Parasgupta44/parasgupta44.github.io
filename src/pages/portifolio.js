@@ -22,6 +22,7 @@ const Image = styled.img`
 const JobCard = styled.a`
   text-decoration: none;
   color: inherit;
+  box-shadow: 0 0 0 0 currentColor;
 
   ${({ href }) =>
     href &&

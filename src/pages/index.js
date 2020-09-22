@@ -130,6 +130,7 @@ export default styled(Home)`
   .social-link {
     padding: 8px;
     color: #555;
+    box-shadow: 0 0 0 0 currentColor;
   }
 
   a.social-link.twitter:hover {

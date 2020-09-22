@@ -39,6 +39,7 @@ class Repositories extends React.Component {
                 <React.Fragment key={repo.name}>
                   <div className="repositories__repo">
                     <a
+                      style={{ boxShadow: '0 0 0 0 currentColor' }}
                       className="repositories__repo-link"
                       href={repo.html_url}
                       target="_blank"
@@ -61,6 +62,7 @@ class Repositories extends React.Component {
             </div>
             <div className="repositories_user-link">
               <a
+                style={{ boxShadow: '0 0 0 0 currentColor' }}
                 href={`https://github.com/${siteConfig.githubUsername}`}
                 target="_blank"
                 rel="noopener noreferrer"
