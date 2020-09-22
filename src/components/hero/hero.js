@@ -18,6 +18,7 @@ const TitleContainer = styled.div`
 `
 
 const HeroTitle = styled.h1`
+  font-family: 'Special Elite', cursive;
   font-weight: 700;
   font-size: 3rem;
   margin: 10px 60px;

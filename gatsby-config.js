@@ -77,6 +77,13 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Oswald`, 'Press Start 2P', 'Luckiest Guy', 'Special Elite'],
+        display: 'swap',
+      },
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
