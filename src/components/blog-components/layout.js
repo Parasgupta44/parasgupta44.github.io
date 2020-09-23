@@ -1,7 +1,13 @@
 import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 import { FiTerminal, FiSun, FiMoon } from 'react-icons/fi'
-import { FaTwitter, FaLinkedin, FaGithub, FaHome } from 'react-icons/fa'
+import {
+  FaTwitter,
+  FaLinkedin,
+  FaGithub,
+  FaHome,
+  FaGoodreadsG,
+} from 'react-icons/fa'
 
 import { rhythm, scale } from './../../utils/typography'
 
@@ -178,6 +184,15 @@ const Layout = ({ location, title, children }) => {
             target="_blank"
           >
             <FaTwitter />
+          </a>
+          {` `}
+          <a
+            style={{ boxShadow: '0 0 0 0 currentColor' }}
+            href="https://www.goodreads.com/user/show/121912597-paras-gupta"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <FaGoodreadsG />
           </a>
         </div>
       </footer>
