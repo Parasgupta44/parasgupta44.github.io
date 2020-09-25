@@ -86,7 +86,7 @@ dbms.security.auth_enabled=false
 ```
 
 Now use `sudo service neo4j restart` to start your neo4j with changes and access it over the URL `http://<ip/dns>:7474/browser/`.
-Here, you can use either the IP address of your VM or the dns address you may have configured. As the IP address can be dynamic, dns should be preferred. Now, you should be able to run this neo4j server from your local machine. The default auth and password will be `neo4j` .
+Here, you can either use the IP address of your VM or the dns address you may have configured. As the IP address can be dynamic, dns should be preferred. Now, you should be able to run this neo4j server from your local machine. The default auth and password will be `neo4j` .
 
 ## Installing / Configuring APOC and GDS for our VM
 
@@ -100,8 +100,8 @@ Here, you can use either the IP address of your VM or the dns address you may ha
 
 - Run the following cmds on terminal for required permissions.
 
-  - `chown neo4j:neo4j apoc-<version>.jar` (Use sudo if necessary)
-  - `chmod 755 apoc-<version>.jar`
+  - `chown neo4j:neo4j file.jar` (Use sudo if necessary. Here `file` is the downloaded jar)
+  - `chmod 755 file.jar`
 
 - Now edit the neo4j.conf file for exposing the APOC procedures.
 
@@ -134,4 +134,4 @@ dbms.security.procedures.whitelist=apoc.coll.*,apoc.load.*,apoc.*,gds.*
 ---
 
 You are ready to go now. Let's make some graphs !!
-*If any changes required for new updates, please make a pull request for the same. Thanks!*🕳️
+_If any changes required for new updates, please make a pull request for the same. Thanks!_ 🕳️
