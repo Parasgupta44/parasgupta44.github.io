@@ -22,12 +22,13 @@ const config = require('../../../data/siteConfig')
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/blogIndex`
+  const rootPathSlash = `${__PATH_PREFIX__}/blogIndex/`
   let header
   const { theme, toggleTheme } = useContext(ThemeContext)
   const { color, background, secondary } = getTheme(theme)
   const darkTheme = getTheme('dark')
 
-  if (location.pathname === rootPath) {
+  if (location.pathname === rootPath || location.pathname === rootPathSlash) {
     header = (
       <h1
         style={{
