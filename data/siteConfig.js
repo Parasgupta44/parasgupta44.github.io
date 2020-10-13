@@ -14,8 +14,9 @@ module.exports = {
   twitterUsername: 'Paras986745',
   githubUsername: 'Parasgupta44',
   authorAvatar: '/images/avatar.jpg',
-  authorDescription: `4th year Undergrad student at Punjab Engineering College, Chandigarh. Majoring in <strong>Computer Science</strong>.<br />
-    Interned with Goldman Sachs, Bangalore from Jan 2020 to June 2020 as a Software Developer. <br />`,
+  authorDescription: `4th year Undergrad student at Punjab Engineering College, Chandigarh. Majoring in <strong>Computer Science</strong>. 
+  Interned with Goldman Sachs, Bangalore from Jan 2020 to June 2020 as a Software Developer with Corporate Treasury Team.<br />
+   <strong>Interest areas: </strong> Deep Learning, Computer Vision, Web Development.`,
   skills: [
     {
       name: 'C/C++',

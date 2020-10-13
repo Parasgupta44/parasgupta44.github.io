@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-cv",
+  "name": "paras-blog-site",
   "private": true,
-  "description": "A simple web app to get up and developing your digital curriculum with GatsbyJS",
+  "description": "Personal website / Blog of Paras Gupta.",
   "version": "0.0.1",
   "author": "Paras Gupta <paras.gupta9867454@gmail.com>",
   "dependencies": {
