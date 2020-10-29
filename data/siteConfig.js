@@ -88,6 +88,7 @@ module.exports = {
     linkedin: 'https://in.linkedin.com/in/paras-gupta-41508215a',
     github: 'https://github.com/Parasgupta44',
     email: 'paras.gupta986745@gmail.com',
+    stackoverflow: 'https://stackoverflow.com/users/11745269/paras-gupta',
   },
   siteUrl: 'https://guptaparas.in',
   pathPrefix: '/', // Note: it must *not* have a trailing slash.
