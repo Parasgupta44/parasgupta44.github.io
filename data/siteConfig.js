@@ -14,13 +14,13 @@ module.exports = {
   twitterUsername: 'Paras986745',
   githubUsername: 'Parasgupta44',
   authorAvatar: '/images/avatar.jpg',
-  authorDescription: `Hi, I'm Paras ( पारस गुप्ता ). 4th year Undergrad student at Punjab Engineering College, Chandigarh. Majoring in <strong>Computer Science</strong>. 
+  authorDescription: `Hi, I'm Paras ( पारस गुप्ता ). 4th year undergrad student at Punjab Engineering College, Chandigarh. Majoring in <strong>Computer Science</strong>. 
   Interned with Goldman Sachs, Bangalore from Jan 2020 to June 2020 as a Software Developer with the Corporate Treasury Team.<br />
    <strong>Interest areas: </strong> Deep Learning, Computer Vision, Web Development.`,
   skills: [
     {
       name: 'C/C++',
-      level: 70,
+      level: 65,
     },
     {
       name: 'Python',
@@ -40,7 +40,7 @@ module.exports = {
     },
     {
       name: 'Git',
-      level: 50,
+      level: 55,
     },
     /* more skills here */
   ],
@@ -55,7 +55,7 @@ module.exports = {
       duration: '6 months',
       occupation: 'Software Developer Intern',
       description:
-        'Was part of the Corporate Treasury team. Worked on a project from scratch invloving technologies like React, Flask, and FastApi. DevOps cycle was followed to continuously push the builds to the servers.',
+        'Was part of the Corporate Treasury team. Worked on a full stack project from scratch invloving technologies like React, Flask, and FastApi. Continuous Integration, Deployment followed.',
     },
     {
       company: 'Punjab Engineering College, Chandigarh',
@@ -75,12 +75,6 @@ module.exports = {
       url:
         'https://drive.google.com/file/d/1xoj1ZCkKUoYqGcwqfh9rtA4om8p__2_L/view?usp=sharing',
     },
-    // {
-    //   image: '/images/gatsby-starter-cv.png',
-    //   description: 'Gatsby starter CV template',
-    //   url:
-    //     'https://www.gatsbyjs.org/starters/santosfrancisco/gatsby-starter-cv/',
-    // },
     /* more portifolio items here */
   ],
   social: {

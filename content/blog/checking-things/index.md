@@ -74,7 +74,7 @@ mdx = Redcarpet.new("What's Ruby?")
 puts mdx.to_html
 ```
 
-#### CPP Snippet
+- #### CPP Snippet
 
 ```cpp
 // Check for comments
