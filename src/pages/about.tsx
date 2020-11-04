@@ -31,7 +31,7 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
           />
           <Bio />
           <div>
-            Hey there, found me. I am currently pursuing my Bachelors in
+            Hey there, found me. I am currently pursuing my Bachelor's of
             Technology from Punjab Engineering College, Chandigarh with majors
             in Computer Science.
             <br></br>
@@ -43,9 +43,9 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
               </strong>
             </em>
             <br></br>
-            <br></br>I have interned with Goldman Sachs, Bangalore from Jan 2020
+            <br></br>I have interned with Goldman Sachs, Bengaluru from Jan 2020
             to June 2020 as a Software Developer with the Corporate Treasury
-            Team. There, I worked on a full stack project from Scratch involving
+            Team. There, I worked on a full stack project from scratch involving
             technologies like React JS, Redux JS, Flask, Fast API etc combined
             with Data Science elements.
             <br></br>
@@ -77,7 +77,7 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
             <br></br>
             My{' '}
             <a
-              href="https://drive.google.com/file/d/1xoj1ZCkKUoYqGcwqfh9rtA4om8p__2_L/view?usp=sharing"
+              href={config.social.resume}
               rel="noopener noreferrer"
               target="_blank"
             >
