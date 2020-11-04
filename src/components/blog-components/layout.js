@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link } from 'gatsby'
-import { FiTerminal, FiSun, FiMoon } from 'react-icons/fi'
+import { FiSun, FiMoon } from 'react-icons/fi'
 import {
   FaTwitter,
   FaLinkedin,
@@ -9,7 +9,7 @@ import {
   FaGoodreadsG,
 } from 'react-icons/fa'
 
-import { rhythm, scale } from './../../utils/typography'
+import { rhythm } from './../../utils/typography'
 
 import ThemeContext from './ThemeContext'
 import Button from './Button'
