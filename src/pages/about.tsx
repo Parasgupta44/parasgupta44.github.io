@@ -33,9 +33,9 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
               />
               <Bio />
               <div>
-                Hey there, found me. I am currently pursuing my Bachelor's of
-                Technology from Punjab Engineering College, Chandigarh with
-                majors in Computer Science.
+                Hey there wanderer, found me. I am currently pursuing my
+                Bachelor's of Technology from Punjab Engineering College,
+                Chandigarh with majors in Computer Science.
                 <br></br>
                 <br></br>
                 My interest areas are:{' '}
@@ -50,6 +50,8 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
                 Treasury Team. There, I worked on a full stack project from
                 scratch involving technologies like React JS, Redux JS, Flask,
                 Fast API etc combined with Data Science elements.
+                <br></br>
+                Currently working on React, Node and Deep Learning Projects.
                 <br></br>
                 <br></br>
                 Find me on{' '}

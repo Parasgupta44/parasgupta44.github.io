@@ -14,17 +14,17 @@ module.exports = {
   twitterUsername: 'Paras986745',
   githubUsername: 'Parasgupta44',
   authorAvatar: '/images/avatar.jpg',
-  authorDescription: `Hi, I'm Paras ( पारस गुप्ता ). 4th year undergrad student at Punjab Engineering College, Chandigarh. Majoring in <strong>Computer Science</strong>. 
-  Interned with Goldman Sachs, Bangalore from Jan 2020 to June 2020 as a Software Developer with the Corporate Treasury Team.<br />
+  authorDescription: `Hi, I'm Paras ( पारस गुप्ता ). I am a fourth year undergraduate student at Punjab Engineering College, Chandigarh. Majoring in <strong>Computer Science</strong>. 
+  I have Interned with Goldman Sachs, Bangalore from Jan 2020 to June 2020 as a Software Developer with the Corporate Treasury Team.<br />
    <strong>Interest areas: </strong> Deep Learning, Computer Vision, Web Development.`,
   skills: [
     {
       name: 'C/C++',
-      level: 65,
+      level: 68,
     },
     {
       name: 'Python',
-      level: 60,
+      level: 65,
     },
     {
       name: 'Javascript',
@@ -55,7 +55,7 @@ module.exports = {
       duration: '6 months',
       occupation: 'Software Developer Intern',
       description:
-        'Was part of the Corporate Treasury team. Worked on a full stack project from scratch invloving technologies like React, Flask, and FastApi. Continuous Integration, Deployment followed.',
+        'Was part of the Corporate Treasury team. Worked on a full stack project from scratch invloving technologies like React JS, Redux JS, Flask, and FastApi. Continuous Integration, Deployment followed.',
     },
     {
       company: 'Punjab Engineering College, Chandigarh',
