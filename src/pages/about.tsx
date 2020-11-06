@@ -90,7 +90,7 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
                 <br></br>
                 <br></br>
                 Go back to the{' '}
-                <Link to="/blogIndex">
+                <Link to="/blogIndex/">
                   <em>Blog,</em>
                 </Link>{' '}
                 <Link to="/">

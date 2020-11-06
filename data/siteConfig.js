@@ -103,11 +103,11 @@ module.exports = {
     },
     {
       label: 'Portfolio',
-      url: '/portifolio',
+      url: '/portifolio/',
     },
     {
       label: 'Blog',
-      url: '/blogIndex',
+      url: '/blogIndex/',
     },
   ],
 }

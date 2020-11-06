@@ -41,7 +41,7 @@ const Layout = ({ location, title, children }) => {
             boxShadow: `none`,
             color: `inherit`,
           }}
-          to={`/blogIndex`}
+          to={`/blogIndex/`}
         >
           {/* {title} */}
           Some weird shit!
@@ -61,7 +61,7 @@ const Layout = ({ location, title, children }) => {
             boxShadow: `none`,
             color: `inherit`,
           }}
-          to={`/blogIndex`}
+          to={`/blogIndex/`}
         >
           {/* {title} */}
           Some weird shit!
