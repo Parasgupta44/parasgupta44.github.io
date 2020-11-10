@@ -39,52 +39,54 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
   return (
     // <Link to="/blogIndex">Blog</Link>
     <ThemeProvider>
-      <Layout location={location} title={siteTitle}>
-        <SEO
-          title="All posts"
-          description="All posts of Paras Gupta's personal portfolio / blog."
-        />
-        <Bio />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <article key={node.fields.slug}>
-              <header>
-                <h2
-                  css={{
-                    marginBottom: rhythm(1 / 4),
-                  }}
-                >
-                  <Link
-                    style={{
-                      boxShadow: `none`,
-                      color: '#ed097b',
-                      fontFamily: `Montserrat, sans-serif`,
+      <section css={{ height: '100%', minHeight: '100vh' }}>
+        <Layout location={location} title={siteTitle}>
+          <SEO
+            title="All posts"
+            description="All posts of Paras Gupta's personal portfolio / blog."
+          />
+          <Bio />
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <article key={node.fields.slug}>
+                <header>
+                  <h2
+                    css={{
+                      marginBottom: rhythm(1 / 4),
                     }}
-                    to={node.fields.slug}
                   >
-                    {title}
-                  </Link>
-                </h2>
-                <small>{node.frontmatter.date}. &nbsp;</small>
-                <p style={{ display: `inline` }}>
-                  <b>
-                    <small> ☕ {node.timeToRead} min read</small>
-                  </b>
-                </p>
-              </header>
-              <section>
-                <p
-                  css={{ marginBottom: rhythm(1.5) }}
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </section>
-            </article>
-          )
-        })}
-      </Layout>
+                    <Link
+                      style={{
+                        boxShadow: `none`,
+                        color: '#ed097b',
+                        fontFamily: `Montserrat, sans-serif`,
+                      }}
+                      to={node.fields.slug}
+                    >
+                      {title}
+                    </Link>
+                  </h2>
+                  <small>{node.frontmatter.date}. &nbsp;</small>
+                  <p style={{ display: `inline` }}>
+                    <b>
+                      <small> ☕ {node.timeToRead} min read</small>
+                    </b>
+                  </p>
+                </header>
+                <section>
+                  <p
+                    css={{ marginBottom: rhythm(1.5) }}
+                    dangerouslySetInnerHTML={{
+                      __html: node.frontmatter.description || node.excerpt,
+                    }}
+                  />
+                </section>
+              </article>
+            )
+          })}
+        </Layout>
+      </section>
     </ThemeProvider>
   )
 }
