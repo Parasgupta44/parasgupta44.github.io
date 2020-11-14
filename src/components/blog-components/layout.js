@@ -44,7 +44,7 @@ const Layout = ({ location, title, children }) => {
           to={`/blogIndex/`}
         >
           {/* {title} */}
-          Some weird shit!
+          Something weird!
         </Link>
       </h1>
     )
@@ -64,7 +64,7 @@ const Layout = ({ location, title, children }) => {
           to={`/blogIndex/`}
         >
           {/* {title} */}
-          Some weird shit!
+          Something weird!
         </Link>
       </h2>
     )
