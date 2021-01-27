@@ -79,7 +79,8 @@ module.exports = {
   ],
   social: {
     twitter: 'https://twitter.com/Paras986745',
-    linkedin: 'https://in.linkedin.com/in/paras-gupta-41508215a',
+    // linkedin: 'https://in.linkedin.com/in/paras-gupta-41508215a',
+    linkedin: 'https://www.linkedin.com/in/parasgupta44/',
     github: 'https://github.com/Parasgupta44',
     email: 'paras.gupta986745@gmail.com',
     stackoverflow: 'https://stackoverflow.com/users/11745269/paras-gupta',
