@@ -86,6 +86,7 @@ module.exports = {
     stackoverflow: 'https://stackoverflow.com/users/11745269/paras-gupta',
     resume:
       'https://drive.google.com/file/d/1xoj1ZCkKUoYqGcwqfh9rtA4om8p__2_L/view?usp=sharing',
+    dontClick: 'https://artpassions.net/dore/mariner.html',
   },
   siteUrl: 'https://guptaparas.in',
   pathPrefix: '/', // Note: it must *not* have a trailing slash.

@@ -19,7 +19,7 @@ type Data = {
   }
 }
 
-const AboutIndex = ({ data, location }: PageProps<Data>) => {
+const Home = ({ data, location }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title
   //   const posts = data.allMarkdownRemark.edges
   return (
@@ -29,12 +29,23 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
           {({ theme }) => (
             <Layout location={location} title={siteTitle}>
               <SEO
-                title="About"
-                description="About Paras Gupta's portfolio / blog."
+                title="Paras Gupta"
+                description="Paras Gupta's portfolio / blog."
                 keywords={config.keyWords}
               />
               <Bio />
               <div>
+                Enter my{' '}
+                <Link
+                  to="/blogIndex/"
+                  style={{ boxShadow: '0 0 0 0 currentColor' }}
+                >
+                  <em>
+                    Blog <FaBlog />
+                  </em>
+                </Link>
+                <br></br>
+                <br></br>
                 Hey there wanderer, found me. I am currently pursuing my
                 Bachelor's of Technology from Punjab Engineering College,
                 Chandigarh with majors in Computer Science.
@@ -56,7 +67,7 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
                 Currently working on React, Node and Deep Learning Projects.
                 <br></br>
                 <br></br>
-                Find me on{' '}
+                Find me on &nbsp;
                 <a
                   style={{ boxShadow: '0 0 0 0 currentColor' }}
                   href={config.social.linkedin}
@@ -98,22 +109,26 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
                 >
                   <em>Resume.</em>
                 </a>
-                <br></br>
+                {/* <br></br>
                 <br></br>
                 Go back to the{' '}
-                <Link
-                  to="/blogIndex/"
-                  style={{ boxShadow: '0 0 0 0 currentColor' }}
-                >
-                  <em>
-                    <FaBlog />,
-                  </em>
+                <Link to="/blogIndex/">
+                  <em>Blog,</em>
                 </Link>{' '}
-                <Link to="/" style={{ boxShadow: '0 0 0 0 currentColor' }}>
+                <Link to="/">
                   <em>
                     <FaHome />
                   </em>
-                </Link>
+                </Link> */}
+                <br></br>
+                <br></br>
+                <a
+                  href={config.social.dontClick}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <em>Don't click.</em>
+                </a>
                 <br></br>
                 <br></br>
                 <hr
@@ -135,7 +150,7 @@ const AboutIndex = ({ data, location }: PageProps<Data>) => {
   )
 }
 
-export default AboutIndex
+export default Home
 
 export const pageQuery = graphql`
   query {

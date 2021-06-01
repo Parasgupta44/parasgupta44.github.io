@@ -23,7 +23,10 @@ const config = require('../../../data/siteConfig')
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/blogIndex`
   const rootPathSlash = `${__PATH_PREFIX__}/blogIndex/`
+  const root = `${__PATH_PREFIX__}/`
+  // const rootSlash = `${__PATH_PREFIX__}/blogIndex/`
   let header
+  let headerSupport
   const { theme, toggleTheme } = useContext(ThemeContext)
   const { color, background, secondary } = getTheme(theme)
   const darkTheme = getTheme('dark')
@@ -69,6 +72,33 @@ const Layout = ({ location, title, children }) => {
       </h2>
     )
   }
+
+  if (location.pathname === root) {
+    headerSupport = (
+      <Link
+        style={{
+          boxShadow: `none`,
+          color: `inherit`,
+        }}
+        to={`/`}
+      >
+        You there?
+      </Link>
+    )
+  } else {
+    headerSupport = (
+      <Link
+        style={{
+          boxShadow: `none`,
+          color: `inherit`,
+        }}
+        to={`/`}
+      >
+        Back to home!
+      </Link>
+    )
+  }
+
   return (
     <div
       css={{
@@ -97,7 +127,7 @@ const Layout = ({ location, title, children }) => {
           marginTop: 0,
         }}
       >
-        <Link
+        {/* <Link
           style={{
             boxShadow: `none`,
             color: `inherit`,
@@ -105,7 +135,8 @@ const Layout = ({ location, title, children }) => {
           to={`/`}
         >
           Back to home!
-        </Link>
+        </Link> */}
+        {headerSupport}
       </h6>
       <header
         css={{
