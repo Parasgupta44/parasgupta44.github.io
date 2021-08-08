@@ -1,6 +1,6 @@
 ## A simple portfolio site built using Gatsby.
 
-Theme by [santosfrancisco](https://github.com/santosfrancisco).
+~~Theme by [santosfrancisco](https://github.com/santosfrancisco).~~ (Updated)
 Go to the [site](https://guptaparas.in/).
 
 ---

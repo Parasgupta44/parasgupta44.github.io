@@ -46,25 +46,18 @@ const Home = ({ data, location }: PageProps<Data>) => {
                 </Link>
                 <br></br>
                 <br></br>
-                Hey there wanderer, found me. I am currently pursuing my
-                Bachelor's of Technology from Punjab Engineering College,
-                Chandigarh with majors in Computer Science.
+                {config.curr_intro_brief}
                 <br></br>
                 <br></br>
                 My interest areas are:{' '}
                 <em>
-                  <strong>
-                    Deep Learning, Graphs, Computer Vision, Web Development.
-                  </strong>
+                  <strong>{config.interest_areas}</strong>
                 </em>
                 <br></br>
-                <br></br>I have interned with Goldman Sachs, Bengaluru from Jan
-                2020 to June 2020 as a Software Developer with the Corporate
-                Treasury Team. There, I worked on a full stack project from
-                scratch involving technologies like React JS, Redux JS, Flask,
-                Fast API etc combined with Data Science elements.
                 <br></br>
-                Currently working on React, Node and Deep Learning Projects.
+                {config.curr_intro}
+                <br></br>
+                {config.curr_work_area}
                 <br></br>
                 <br></br>
                 Find me on &nbsp;

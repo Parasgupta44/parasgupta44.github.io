@@ -112,4 +112,8 @@ module.exports = {
       url: '/blogIndex/',
     },
   ],
+  curr_intro_brief: `Hey there wanderer, found me. I am a Software Engineer at Goldman Sachs, India. I received my Bachelor's of Technology from Punjab Engineering College, Chandigarh with majors in Computer Science (cliched intro done right ?)`,
+  curr_intro: `I also interned with Goldman Sachs, Bengaluru from Jan 2020 to June 2020 as a Software Developer with the Corporate Treasury Team. There, I worked on a full stack project from scratch involving technologies like React JS, Redux JS, Flask, Fast API etc combined with Data Science elements.`,
+  interest_areas: `Deep Learning, Graphs, Computer Vision, Web Development.`,
+  curr_work_area: `Currently working on React, Node and Deep Learning Projects.`,
 }
