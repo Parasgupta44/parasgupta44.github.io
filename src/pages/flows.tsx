@@ -2,7 +2,8 @@ import React from 'react'
 import Sketch from 'react-p5'
 import p5Types from 'p5'
 
-const Flow = () => {
+const Flows = () => {
+  const isBrowser = typeof window !== 'undefined'
   var points = []
   var mult
   var r1, r2, g1, g2, b1, b2
@@ -72,7 +73,9 @@ const Flow = () => {
   }
 
   const doubleClicked = p5 => {
-    window.alert('Well looks like you like this pattern!')
+    if (isBrowser) {
+      window.alert('Well looks like you like this pattern!')
+    }
     p5.saveCanvas('flow', 'png')
   }
 
@@ -83,9 +86,11 @@ const Flow = () => {
   return (
     <div className="App">
       {/* <h1>react-p5</h1> */}
-      <Sketch setup={setup} draw={draw} doubleClicked={doubleClicked} />
+      {isBrowser && (
+        <Sketch setup={setup} draw={draw} doubleClicked={doubleClicked} />
+      )}
     </div>
   )
 }
 
-export default Flow
+export default Flows

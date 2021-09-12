@@ -123,6 +123,11 @@ const Home = ({ data, location }: PageProps<Data>) => {
                   <em>Don't click.</em>
                 </a>
                 <br></br>
+                Check out some p5's: &nbsp;
+                <Link to="/flows/">
+                  <em>Flows</em>
+                </Link>
+                <br></br>
                 <br></br>
                 <hr
                   style={{
