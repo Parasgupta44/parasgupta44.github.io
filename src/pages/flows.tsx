@@ -2,6 +2,9 @@ import React from 'react'
 import Sketch from 'react-p5'
 import p5Types from 'p5'
 
+import SEO from '../components/blog-components/seo'
+const config = require('../../data/siteConfig')
+
 const Flows = () => {
   const isBrowser = typeof window !== 'undefined'
   var points = []
@@ -86,6 +89,11 @@ const Flows = () => {
   return (
     <div className="App">
       {/* <h1>react-p5</h1> */}
+      <SEO
+        title="Flows"
+        description="Paras Gupta's portfolio / blog - p5."
+        keywords={config.keyWords}
+      />
       {isBrowser && (
         <Sketch setup={setup} draw={draw} doubleClicked={doubleClicked} />
       )}
