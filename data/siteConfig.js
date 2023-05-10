@@ -73,7 +73,7 @@ module.exports = {
       image: '/images/Resume_SS.PNG',
       description: 'Resume - Paras Gupta',
       url:
-        'https://drive.google.com/file/d/1xoj1ZCkKUoYqGcwqfh9rtA4om8p__2_L/view?usp=sharing',
+        'https://drive.google.com/file/d/1KaCIhZ9u3YCqdnNe_Vtz6zlh0-lQD1L6/view?usp=sharing',
     },
     /* more portifolio items here */
   ],
@@ -85,7 +85,7 @@ module.exports = {
     email: 'paras.gupta986745@gmail.com',
     stackoverflow: 'https://stackoverflow.com/users/11745269/paras-gupta',
     resume:
-      'https://drive.google.com/file/d/1xoj1ZCkKUoYqGcwqfh9rtA4om8p__2_L/view?usp=sharing',
+      'https://drive.google.com/file/d/1KaCIhZ9u3YCqdnNe_Vtz6zlh0-lQD1L6/view?usp=sharing',
     dontClick: 'https://artpassions.net/dore/mariner.html',
   },
   siteUrl: 'https://guptaparas.in',
