@@ -13,3 +13,4 @@ Development happens on `dev` and once the deployment has to be rolled out, the b
 
 > Migrate the whole site to TypeScript.
 > Remove old home page ( done )
+> Write more blogs, please
