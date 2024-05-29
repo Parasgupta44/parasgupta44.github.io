@@ -73,7 +73,7 @@ module.exports = {
       image: '/images/Resume_SS.PNG',
       description: 'Resume - Paras Gupta',
       url:
-        'https://drive.google.com/file/d/1KaCIhZ9u3YCqdnNe_Vtz6zlh0-lQD1L6/view?usp=sharing',
+        'https://drive.google.com/file/d/16EkRZkblK1FQDemQmFzSgkj8Jj2EnxJ9/view',
     },
     /* more portifolio items here */
   ],
@@ -85,7 +85,7 @@ module.exports = {
     email: 'paras.gupta986745@gmail.com',
     stackoverflow: 'https://stackoverflow.com/users/11745269/paras-gupta',
     resume:
-      'https://drive.google.com/file/d/1KaCIhZ9u3YCqdnNe_Vtz6zlh0-lQD1L6/view?usp=sharing',
+      'https://drive.google.com/file/d/16EkRZkblK1FQDemQmFzSgkj8Jj2EnxJ9/view',
     dontClick: 'https://artpassions.net/dore/mariner.html',
   },
   siteUrl: 'https://guptaparas.in',
@@ -112,8 +112,8 @@ module.exports = {
       url: '/blogIndex/',
     },
   ],
-  curr_intro_brief: `Hey there wanderer, found me. I am a Software Engineer at Goldman Sachs, India. I received my Bachelor's of Technology from Punjab Engineering College, Chandigarh with majors in Computer Science (cliched intro done right ?)`,
+  curr_intro_brief: `I am working as a Software Engineer at Goldman Sachs, India. I received my Bachelor's of Technology from Punjab Engineering College, Chandigarh with majors in Computer Science (cliched intro done right ?)`,
   curr_intro: `I also interned with Goldman Sachs, Bengaluru from Jan 2020 to June 2020 as a Software Developer with the Corporate Treasury Team. There, I worked on a full stack project from scratch involving technologies like React JS, Redux JS, Flask, Fast API etc combined with Data Science elements.`,
-  interest_areas: `Deep Learning, Graphs, Computer Vision, Web Development.`,
-  curr_work_area: `Currently working on React, Node and Deep Learning Projects.`,
+  interest_areas: `Web and Backend development, FinTech, Deep Learning, Computer Vision`,
+  curr_work_area: `Currently working on Python Web Frameworks, ReactJS.`,
 }
