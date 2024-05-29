@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Paras Gupta]]></title><description><![CDATA[Personal Portfolio / Blog of Paras Gupta.]]></description><link>https://guptaparas.in</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 29 May 2024 08:28:44 GMT</lastBuildDate><item><title><![CDATA[Installing Neo4j on a linux virtual machine]]></title><description><![CDATA[Writing this post to keep track of the steps I followed while installing neo4j on an azure virtual machine (Linux). Create a Virtual Machine…]]></description><link>https://guptaparas.in/neo4j-virtual-machine/</link><guid isPermaLink="false">https://guptaparas.in/neo4j-virtual-machine/</guid><pubDate>Sat, 26 Sep 2020 22:00:03 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/603756bd90493d8e35ebb022d576ed56/b17f8/logo.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.08108108108109%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMEBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAAHo6LEwXK//xAAZEAEAAgMAAAAAAAAAAAAAAAACAxIAASD/2gAIAQEAAQUCjkaVll98f//EABYRAQEBAAAAAAAAAAAAAAAAAAEQEf/aAAgBAwEBPwEMn//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABgQAAIDAAAAAAAAAAAAAAAAAAARIDEy/9oACAEBAAY/AkZKh//EABsQAQACAgMAAAAAAAAAAAAAAAEAMRARIVGR/9oACAEBAAE/IXyDyp2w7OIAKM//2gAMAwEAAgADAAAAEFTP/8QAFhEBAQEAAAAAAAAAAAAAAAAAAREQ/9oACAEDAQE/EGEW5//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EAB4QAAICAgIDAAAAAAAAAAAAAAERITEAURBBkfDx/9oACAEBAAE/EDjy2lvfGCSBal/d9ZHEBFgijjRAZZQs8//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;neo4j_logo&quot;
+        title=&quot;neo4j_logo&quot;
+        src=&quot;/static/603756bd90493d8e35ebb022d576ed56/1c72d/logo.jpg&quot;
+        srcset=&quot;/static/603756bd90493d8e35ebb022d576ed56/a80bd/logo.jpg 148w,
+/static/603756bd90493d8e35ebb022d576ed56/1c91a/logo.jpg 295w,
+/static/603756bd90493d8e35ebb022d576ed56/1c72d/logo.jpg 590w,
+/static/603756bd90493d8e35ebb022d576ed56/a8a14/logo.jpg 885w,
+/static/603756bd90493d8e35ebb022d576ed56/fbd2c/logo.jpg 1180w,
+/static/603756bd90493d8e35ebb022d576ed56/b17f8/logo.jpg 1600w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Writing this post to keep track of the steps I followed while installing neo4j on an azure virtual machine (Linux).&lt;/p&gt;
+&lt;h3&gt;Create a Virtual Machine&lt;/h3&gt;
+&lt;p&gt;Create a Linux virtual machine on a cloud provider of your choice. I used Microsoft Azure for the same. For the VM’s on aws and other platforms, steps to install neo4j server will almost remain same. Useful &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal&quot;&gt;docs&lt;/a&gt; for creating a VM on azure.&lt;/p&gt;
+&lt;h3&gt;Connect to your Virtual Machine&lt;/h3&gt;
+&lt;p&gt;After instantiating the VM, it will get started automatically. Use the public IP provided on the cloud provider’s dashboard to connect remotely. There are various tools for the same. &lt;a href=&quot;https://www.putty.org/&quot;&gt;Putty&lt;/a&gt; is a very popular choice.&lt;/p&gt;
+&lt;h3&gt;Updating and Installing some required stuff&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Update the package repository list&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; update&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Installing JAVA:&lt;/strong&gt;
+I will be using OpenJDK 8. You can install JDK 11 if you want to use the newer neo4j version 4.x . I will be using neo4j ver 3.5.x .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; openjdk-8-jdk&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# To check the version&lt;/span&gt;
+java -version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Installing neo4j:&lt;/strong&gt;
+First, we will be updating our package repositries and then simply installing the neo4j on our server.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Run in sequence&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;wget&lt;/span&gt; -O - https://debian.neo4j.org/neotechnology.gpg.key &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; apt-key &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; -
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;deb https://debian.neo4j.org/repo stable/&apos;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;tee&lt;/span&gt; -a /etc/apt/sources.list.d/neo4j.list
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt-get&lt;/span&gt; update&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Install neo4j&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; neo4j
+&lt;span class=&quot;token comment&quot;&gt;# Check the version&lt;/span&gt;
+neo4j --version&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will install neo4j on our linux VM (Using Debian here). These steps can vary with time. The official documentation for installing neo4j on Linux distros can be found &lt;a href=&quot;https://neo4j.com/docs/operations-manual/current/installation/linux/&quot;&gt;here&lt;/a&gt;. You can also follow other methods like exploding a tarball and installing neo4j from it according to the use case you have.&lt;/p&gt;
+&lt;h3&gt;Steps to make this instance available over the internet&lt;/h3&gt;
+&lt;p&gt;After installing neo4j server on our VM, we need to make it available over the Internet. From your cloud provider’s dashboard, open the settings for the VM and in the networking tab, add specific inbound / outbound rules for the ports that we will be accessing over public Internet. In case of neo4j these will be &lt;code class=&quot;language-text&quot;&gt;7474&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;7687&lt;/code&gt;. For azure, you can follow these &lt;a href=&quot;https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nsg-quickstart-portal&quot;&gt;docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now, we have to make changes in our neo4j.conf file to accept connections to our database from outside world.&lt;/p&gt;
+&lt;p&gt;Follow the below given steps to make the instance accessible over the required ports:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Use sudo when ever necessary if you are the root user&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Open the conf file in your preferred editor&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;vi&lt;/span&gt; /etc/neo4j/neo4j.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# If you want to open the connection to all the outside ports, uncomment / add this line. (Use with caution!)&lt;/span&gt;
+dbms.connectors.default_listen_address&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0.0&lt;/span&gt;.0.0
+
+&lt;span class=&quot;token comment&quot;&gt;# For specific ports that we need for our use case, add the following lines to open connection to these ports.&lt;/span&gt;
+dbms.connector.bolt.enabled&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;true
+dbms.connector.bolt.listen_address&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0.0&lt;/span&gt;.0.0:7687
+dbms.connector.http.enabled&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;true
+dbms.connector.http.listen_address&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0.0&lt;/span&gt;.0.0:7474
+
+&lt;span class=&quot;token comment&quot;&gt;# If you have to disable authentication for some reason, uncomment / add the following&lt;/span&gt;
+dbms.security.auth_enabled&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;false&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now use &lt;code class=&quot;language-text&quot;&gt;sudo service neo4j restart&lt;/code&gt; to start your neo4j with changes and access it over the URL &lt;code class=&quot;language-text&quot;&gt;http://&amp;lt;ip/dns&amp;gt;:7474/browser/&lt;/code&gt;.
+Here, you can either use the IP address of your VM or the dns address you may have configured. As the IP address can be dynamic, dns should be preferred. Now, you should be able to run this neo4j server from your local machine. The default auth and password will be &lt;code class=&quot;language-text&quot;&gt;neo4j&lt;/code&gt; .&lt;/p&gt;
+&lt;h2&gt;Installing / Configuring APOC and GDS for our VM&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://neo4j.com/labs/apoc/#:~:text=APOC%20is%20an%20add%2Don,all%20APOC%20functions%20and%20procedures&quot;&gt;APOC&lt;/a&gt; is an add-on library for Neo4j that provides hundreds of procedures and functions adding a lot of useful functionality.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://neo4j.com/docs/graph-data-science/current/introduction/&quot;&gt;GDS&lt;/a&gt; (Graph Data Science) library provides efficiently implemented, parallel versions of common graph algorithms for Neo4j, exposed as &lt;em&gt;Cypher&lt;/em&gt; procedures.&lt;/p&gt;
+&lt;h3&gt;Configure APOC&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Download the &lt;a href=&quot;https://github.com/neo4j-contrib/neo4j-apoc-procedures&quot;&gt;APOC&lt;/a&gt; jar file matching with your neo4j version (!required) and dump it in &lt;code class=&quot;language-text&quot;&gt;/var/lib/neo4j/plugins&lt;/code&gt;. You can use wget to download the jar file directly into the given directory.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run the following cmds on terminal for required permissions.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;chown neo4j:neo4j file.jar&lt;/code&gt; (Use sudo if necessary. Here &lt;code class=&quot;language-text&quot;&gt;file&lt;/code&gt; is the downloaded jar)&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;chmod 755 file.jar&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Now edit the neo4j.conf file for exposing the APOC procedures.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Uncomment / add the following line&lt;/span&gt;
+dbms.security.procedures.whitelist&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;apoc.coll.*,apoc.load.*,apoc.*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Restart you neo4j server using &lt;code class=&quot;language-text&quot;&gt;sudo service neo4j restart&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configure GDS (Graph Data Science)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Download the &lt;a href=&quot;https://neo4j.com/download-center/&quot;&gt;GDS&lt;/a&gt; jar file according to your &lt;a href=&quot;https://neo4j.com/docs/graph-data-science/current/installation/#_supported_neo4j_versions&quot;&gt;neo4j&lt;/a&gt; version. Dump this jar directly into &lt;code class=&quot;language-text&quot;&gt;/var/lib/neo4j/plugins&lt;/code&gt; .&lt;/li&gt;
+&lt;li&gt;Now edit the neo4j.conf file for exposing the procedures.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Uncomment / add the following line&lt;/span&gt;
+dbms.security.procedures.unrestricted&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;gds.*
+&lt;span class=&quot;token comment&quot;&gt;# This line in enhanced from apoc step&lt;/span&gt;
+dbms.security.procedures.whitelist&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;apoc.coll.*,apoc.load.*,apoc.*,gds.*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Restart you neo4j server using &lt;code class=&quot;language-text&quot;&gt;sudo service neo4j restart&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Check if it is properly intalled using &lt;code class=&quot;language-text&quot;&gt;CALL gds.list()&lt;/code&gt; to list all procedures.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For various file locations info, use this official &lt;a href=&quot;https://neo4j.com/docs/operations-manual/current/configuration/file-locations/#file-locations&quot;&gt;docs&lt;/a&gt; link.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;You are ready to go now. Let’s make some graphs !!
+&lt;em&gt;If any changes required for new updates, please make a pull request for the same. Thanks!&lt;/em&gt; 🕳️&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Neural Style Transfer]]></title><description><![CDATA[This post contains some outputs after applying neural style transfer techniques on them. IPython notebook can be found here. Neural style…]]></description><link>https://guptaparas.in/neural-style/</link><guid isPermaLink="false">https://guptaparas.in/neural-style/</guid><pubDate>Wed, 09 Sep 2020 22:00:03 GMT</pubDate><content:encoded>&lt;p&gt;This post contains some outputs after applying neural style transfer techniques on them.&lt;/p&gt;
+&lt;p&gt;IPython notebook can be found &lt;a href=&quot;https://github.com/Parasgupta44/DL_Notebooks/blob/master/Neural_Style.ipynb&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Neural style transfer is an optimization technique used to take some images, a content image, a style reference image (such as an artwork by a famous painter) and blend them together such that the content image is transformed to look still like the content image, but “painted” in the style of the style image.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Examples&lt;/h2&gt;
+&lt;h3&gt;Cowboy Bebop / Pulp Fiction / Starry Night Over the Rhône (Vincent van Gogh)&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8a26c44fe18b64f6d237a1a2d2c71f66/eec88/bebop.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 31.08108108108108%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAGABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAEDBP/EABYBAQEBAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAABjIDQNJ//xAAYEAADAQEAAAAAAAAAAAAAAAABAgMRIf/aAAgBAQABBQLW1qkVNe//xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPwFn/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAIR/9oACAECAQE/AZa//8QAGRAAAgMBAAAAAAAAAAAAAAAAESEAAXEQ/9oACAEBAAY/AkMEtDOf/8QAGRABAQEBAQEAAAAAAAAAAAAAAREAMSFx/9oACAEBAAE/IUqiPYQ+ZyA/CcZFM67/2gAMAwEAAgADAAAAEPPP/8QAFxEBAAMAAAAAAAAAAAAAAAAAAAERMf/aAAgBAwEBPxDKof/EABgRAAIDAAAAAAAAAAAAAAAAAAAhARFR/9oACAECAQE/EElFtP/EABkQAQADAQEAAAAAAAAAAAAAAAEAIVERMf/aAAgBAQABPxB6TdjBeM5OECIGDyOZWNT/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Bebop_Fiction&quot;
+        title=&quot;Bebop_Fiction&quot;
+        src=&quot;/static/8a26c44fe18b64f6d237a1a2d2c71f66/1c72d/bebop.jpg&quot;
+        srcset=&quot;/static/8a26c44fe18b64f6d237a1a2d2c71f66/a80bd/bebop.jpg 148w,
+/static/8a26c44fe18b64f6d237a1a2d2c71f66/1c91a/bebop.jpg 295w,
+/static/8a26c44fe18b64f6d237a1a2d2c71f66/1c72d/bebop.jpg 590w,
+/static/8a26c44fe18b64f6d237a1a2d2c71f66/a8a14/bebop.jpg 885w,
+/static/8a26c44fe18b64f6d237a1a2d2c71f66/fbd2c/bebop.jpg 1180w,
+/static/8a26c44fe18b64f6d237a1a2d2c71f66/eec88/bebop.jpg 2880w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/df36da84c62b524b2d1e08eb225eda4f/a2510/join_cowboy.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAEDBAIF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQIA/9oADAMBAAIQAxAAAAHiKYufTZVGSoGwG//EABsQAAIDAAMAAAAAAAAAAAAAAAIRAAEDBCEi/9oACAEBAAEFAtNLdci4GuSNBbyuDiCXS9DP/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFxEAAwEAAAAAAAAAAAAAAAAAABARYf/aAAgBAgEBPwEmP//EAB8QAQACAAYDAAAAAAAAAAAAAAEAEQIDEBIhMUFRkf/aAAgBAQAGPwJcuqH1NrhLnYROWXSM8x+6ds//xAAbEAEAAgMBAQAAAAAAAAAAAAABABEhMUFhUf/aAAgBAQABPyEWtZOmJynkit0YSpftHaqUE+jGXyuJ2OYrlAg1s+z/2gAMAwEAAgADAAAAEH/ff//EABgRAAIDAAAAAAAAAAAAAAAAAAABEBFR/9oACAEDAQE/EC1s/wD/xAAZEQADAAMAAAAAAAAAAAAAAAAAAREQUfD/2gAIAQIBAT8QiL4jWP/EAB0QAQEAAgMAAwAAAAAAAAAAAAERACExQWFRgaH/2gAIAQEAAT8QYp1cL3J4ZQYV1JIbE6yBsaIic/WII1xwDsHW33Bki/s23vBB7CiczzDCpIr8rgCt5dahkhVpkbz/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Bebop_Fiction_Join&quot;
+        title=&quot;Bebop_Fiction_Join&quot;
+        src=&quot;/static/df36da84c62b524b2d1e08eb225eda4f/1c72d/join_cowboy.jpg&quot;
+        srcset=&quot;/static/df36da84c62b524b2d1e08eb225eda4f/a80bd/join_cowboy.jpg 148w,
+/static/df36da84c62b524b2d1e08eb225eda4f/1c91a/join_cowboy.jpg 295w,
+/static/df36da84c62b524b2d1e08eb225eda4f/1c72d/join_cowboy.jpg 590w,
+/static/df36da84c62b524b2d1e08eb225eda4f/a8a14/join_cowboy.jpg 885w,
+/static/df36da84c62b524b2d1e08eb225eda4f/a2510/join_cowboy.jpg 1000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Azkaban / Wassily Kandinsky’s Composition VII&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/fc5859cb8388d5368c943383e34fb9a8/1b179/H_pot.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 30.405405405405407%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAGABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBP/EABUBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAHLINxD/8QAGRAAAwADAAAAAAAAAAAAAAAAAQIDERIy/9oACAEBAAEFAnYZjzQHf//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/AUf/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPwFX/8QAGRAAAgMBAAAAAAAAAAAAAAAAESEAARBR/9oACAEBAAY/AiFzFYn/xAAXEAEBAQEAAAAAAAAAAAAAAAABESEA/9oACAEBAAE/IYkZNjiqDNr1YhMh3//aAAwDAQACAAMAAAAQc9//xAAVEQEBAAAAAAAAAAAAAAAAAAABAP/aAAgBAwEBPxAgJf/EABURAQEAAAAAAAAAAAAAAAAAAAEA/9oACAECAQE/EGXf/8QAGxAAAgIDAQAAAAAAAAAAAAAAAREAITFBYeH/2gAIAQEAAT8QBPJgi8+QzIB+7uKq2QWt3P/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;H_potter&quot;
+        title=&quot;H_potter&quot;
+        src=&quot;/static/fc5859cb8388d5368c943383e34fb9a8/1c72d/H_pot.jpg&quot;
+        srcset=&quot;/static/fc5859cb8388d5368c943383e34fb9a8/a80bd/H_pot.jpg 148w,
+/static/fc5859cb8388d5368c943383e34fb9a8/1c91a/H_pot.jpg 295w,
+/static/fc5859cb8388d5368c943383e34fb9a8/1c72d/H_pot.jpg 590w,
+/static/fc5859cb8388d5368c943383e34fb9a8/a8a14/H_pot.jpg 885w,
+/static/fc5859cb8388d5368c943383e34fb9a8/fbd2c/H_pot.jpg 1180w,
+/static/fc5859cb8388d5368c943383e34fb9a8/1b179/H_pot.jpg 2982w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b734e7bb5ad22661df1abcc3bcc5f0ff/a2510/h_pot_join.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMCAf/EABYBAQEBAAAAAAAAAAAAAAAAAAECAP/aAAwDAQACEAMQAAABcZlmudOgOwz/AP/EAB0QAAICAQUAAAAAAAAAAAAAAAECABEDEiEiMTL/2gAIAQEAAQUCY1EoqnR3ZhQRLVvQGrEOM//EABYRAAMAAAAAAAAAAAAAAAAAAAAQIf/aAAgBAwEBPwEj/8QAFxEBAAMAAAAAAAAAAAAAAAAAAQAQEf/aAAgBAgEBPwFmt//EABsQAAMAAgMAAAAAAAAAAAAAAAABERBBEiFR/9oACAEBAAY/AivWONZPSob2dkTP/8QAHRAAAgICAwEAAAAAAAAAAAAAAREAITFBUWGhcf/aAAgBAQABPyFQlbTMA4Fd4+Z9hckrAzAkJk+oHUfIHQW4oNy3ccWFP//aAAwDAQACAAMAAAAQWMBD/8QAGREAAgMBAAAAAAAAAAAAAAAAAEEBEBEh/9oACAEDAQE/EI4zC6//xAAZEQACAwEAAAAAAAAAAAAAAAAAARAhUWH/2gAIAQIBAT8QtyDBI//EABsQAQEBAQEAAwAAAAAAAAAAAAERACExQWFx/9oACAEBAAE/EOSi/QX5xKyljmfdqt4tfACQrCOusCnZCvfMUVFgzsWR7cSZ9jqtykz1P0u//9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;H_Potter_Join&quot;
+        title=&quot;H_Potter_Join&quot;
+        src=&quot;/static/b734e7bb5ad22661df1abcc3bcc5f0ff/1c72d/h_pot_join.jpg&quot;
+        srcset=&quot;/static/b734e7bb5ad22661df1abcc3bcc5f0ff/a80bd/h_pot_join.jpg 148w,
+/static/b734e7bb5ad22661df1abcc3bcc5f0ff/1c91a/h_pot_join.jpg 295w,
+/static/b734e7bb5ad22661df1abcc3bcc5f0ff/1c72d/h_pot_join.jpg 590w,
+/static/b734e7bb5ad22661df1abcc3bcc5f0ff/a8a14/h_pot_join.jpg 885w,
+/static/b734e7bb5ad22661df1abcc3bcc5f0ff/a2510/h_pot_join.jpg 1000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Al Pacino / Wassily Kandinsky’s Composition VII&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dd44012d7483ec024d5b3902a8a45c72/3013c/al_pac.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 22.2972972972973%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAEABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgED/9oADAMBAAIQAxAAAAGCwzewN//EABkQAAMAAwAAAAAAAAAAAAAAAAECAwATIf/aAAgBAQABBQKbkUbr7CM//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFxABAQEBAAAAAAAAAAAAAAAAAQARUf/aAAgBAQAGPwIOzZhf/8QAGhAAAgIDAAAAAAAAAAAAAAAAAAERIUFhkf/aAAgBAQABPyGg7Wg0J4HRcT//2gAMAwEAAgADAAAAEIAf/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAExQf/aAAgBAwEBPxDWOn//xAAWEQEBAQAAAAAAAAAAAAAAAAABADH/2gAIAQIBAT8QdIy//8QAGhABAAMBAQEAAAAAAAAAAAAAAQARITFh0f/aAAgBAQABPxDlcrUXx+Rc0EqvYjjCm3epP//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Al_pacino&quot;
+        title=&quot;Al_pacino&quot;
+        src=&quot;/static/dd44012d7483ec024d5b3902a8a45c72/1c72d/al_pac.jpg&quot;
+        srcset=&quot;/static/dd44012d7483ec024d5b3902a8a45c72/a80bd/al_pac.jpg 148w,
+/static/dd44012d7483ec024d5b3902a8a45c72/1c91a/al_pac.jpg 295w,
+/static/dd44012d7483ec024d5b3902a8a45c72/1c72d/al_pac.jpg 590w,
+/static/dd44012d7483ec024d5b3902a8a45c72/a8a14/al_pac.jpg 885w,
+/static/dd44012d7483ec024d5b3902a8a45c72/fbd2c/al_pac.jpg 1180w,
+/static/dd44012d7483ec024d5b3902a8a45c72/3013c/al_pac.jpg 4801w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d9921d1a1aa7489d4cbe72791d3a44bb/a2510/al_pac_join.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECBAP/xAAXAQEBAQEAAAAAAAAAAAAAAAACAwAE/9oADAMBAAIQAxAAAAF0pXnrqQQxWNTYCP/EABwQAAEEAwEAAAAAAAAAAAAAAAABAgMSESEiMf/aAAgBAQABBQKzi20OhyPzHmq8i+RbZ//EABYRAQEBAAAAAAAAAAAAAAAAAAEQMf/aAAgBAwEBPwGOs//EABcRAQADAAAAAAAAAAAAAAAAAAABEBH/2gAIAQIBAT8BbUv/xAAcEAABAwUAAAAAAAAAAAAAAAAAASExEBEiQWH/2gAIAQEABj8CgeasZTwSwi7HP//EABwQAAMBAAIDAAAAAAAAAAAAAAABIRExQVFhgf/aAAgBAQABPyFskY9F6gaciq6zFbfNG8XXYWkNnb0cynp//9oADAMBAAIAAwAAABCL74H/xAAZEQADAAMAAAAAAAAAAAAAAAAAAREhgfD/2gAIAQMBAT8QazCI6aEf/8QAGBEBAQEBAQAAAAAAAAAAAAAAAQARIUH/2gAIAQIBAT8QA8tWcJY3/8QAHBABAQACAwEBAAAAAAAAAAAAAREAITFBUZHR/9oACAEBAAE/ECdMFXxwIUM8VdfmUsLfMFmiWPly0l61gQv3EaGjWmZe1At17MDSnkYdZVDYK5//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Al_Pacino_Join&quot;
+        title=&quot;Al_Pacino_Join&quot;
+        src=&quot;/static/d9921d1a1aa7489d4cbe72791d3a44bb/1c72d/al_pac_join.jpg&quot;
+        srcset=&quot;/static/d9921d1a1aa7489d4cbe72791d3a44bb/a80bd/al_pac_join.jpg 148w,
+/static/d9921d1a1aa7489d4cbe72791d3a44bb/1c91a/al_pac_join.jpg 295w,
+/static/d9921d1a1aa7489d4cbe72791d3a44bb/1c72d/al_pac_join.jpg 590w,
+/static/d9921d1a1aa7489d4cbe72791d3a44bb/a8a14/al_pac_join.jpg 885w,
+/static/d9921d1a1aa7489d4cbe72791d3a44bb/a2510/al_pac_join.jpg 1000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;Pulp Fiction / The Starry Night (Vincent van Gogh)&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/56ce7a9dfd419e7b0352f76054e9f4c5/9288f/pulp.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42.567567567567565%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/aAAwDAQACEAMQAAABlbMgdUzCx//EABkQAAIDAQAAAAAAAAAAAAAAAAECAANBMv/aAAgBAQABBQLVdYLgo0dT/8QAFhEAAwAAAAAAAAAAAAAAAAAAAQIQ/9oACAEDAQE/AWE//8QAFxEAAwEAAAAAAAAAAAAAAAAAAAECEv/aAAgBAgEBPwGWZR//xAAcEAABAwUAAAAAAAAAAAAAAAABABEhAhBBcsH/2gAIAQEABj8CBAhsoym4qtr/AP/EABwQAQACAQUAAAAAAAAAAAAAAAEAESEQMUFRcf/aAAgBAQABPyGlpne5iU0EcSgMniM+7p//2gAMAwEAAgADAAAAEED/AP/EABYRAQEBAAAAAAAAAAAAAAAAAAEAEf/aAAgBAwEBPxAlgy//xAAWEQEBAQAAAAAAAAAAAAAAAAABABH/2gAIAQIBAT8QYJV1L//EAB4QAQACAQQDAAAAAAAAAAAAAAEAESExQbHBYXGh/9oACAEBAAE/EMSlRTANiGdWowhKmWytb8MIWldJ2Nz7Hc5HEdvU/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;H_potter&quot;
+        title=&quot;H_potter&quot;
+        src=&quot;/static/56ce7a9dfd419e7b0352f76054e9f4c5/1c72d/pulp.jpg&quot;
+        srcset=&quot;/static/56ce7a9dfd419e7b0352f76054e9f4c5/a80bd/pulp.jpg 148w,
+/static/56ce7a9dfd419e7b0352f76054e9f4c5/1c91a/pulp.jpg 295w,
+/static/56ce7a9dfd419e7b0352f76054e9f4c5/1c72d/pulp.jpg 590w,
+/static/56ce7a9dfd419e7b0352f76054e9f4c5/a8a14/pulp.jpg 885w,
+/static/56ce7a9dfd419e7b0352f76054e9f4c5/fbd2c/pulp.jpg 1180w,
+/static/56ce7a9dfd419e7b0352f76054e9f4c5/9288f/pulp.jpg 2626w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 590px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7ec4e9c98a6895fa31b4df9455ce5d6a/a2510/pulp_join.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAEDBAL/xAAWAQEBAQAAAAAAAAAAAAAAAAACAQP/2gAMAwEAAhADEAAAAaepqWelJRjAtAc//8QAGhAAAgMBAQAAAAAAAAAAAAAAAQIAETEDEv/aAAgBAQABBQJo2LYXyTFt2AExwt9XFP8A/8QAFREBAQAAAAAAAAAAAAAAAAAAEEH/2gAIAQMBAT8BIf/EABYRAQEBAAAAAAAAAAAAAAAAABBCYf/aAAgBAgEBPwHCj//EAB0QAAICAgMBAAAAAAAAAAAAAAARATECMhIhQVH/2gAIAQEABj8Cxuyba8NSX2qPnE1ZkIk//8QAHBABAAMAAwEBAAAAAAAAAAAAAQARITFBYYGh/9oACAEBAAE/IeNCyse5eo1ufUZOHly6cdj1iq2ODn7XLQkHU69SgC1P/9oADAMBAAIAAwAAABBs/wC+/8QAGREAAgMBAAAAAAAAAAAAAAAAADEBEBEh/9oACAEDAQE/EOM2kI//xAAZEQACAwEAAAAAAAAAAAAAAAAAASExcYH/2gAIAQIBAT8QnQhW4M//xAAdEAEBAAICAwEAAAAAAAAAAAABEQAhMUFRYcHR/9oACAEBAAE/EODvGjN/nzHBsjU6IcCTg30+t4134ZuV6pGDzuIdzGdLVXswZmifmDkItVHNVokrejP/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;H_Potter_Join&quot;
+        title=&quot;H_Potter_Join&quot;
+        src=&quot;/static/7ec4e9c98a6895fa31b4df9455ce5d6a/1c72d/pulp_join.jpg&quot;
+        srcset=&quot;/static/7ec4e9c98a6895fa31b4df9455ce5d6a/a80bd/pulp_join.jpg 148w,
+/static/7ec4e9c98a6895fa31b4df9455ce5d6a/1c91a/pulp_join.jpg 295w,
+/static/7ec4e9c98a6895fa31b4df9455ce5d6a/1c72d/pulp_join.jpg 590w,
+/static/7ec4e9c98a6895fa31b4df9455ce5d6a/a8a14/pulp_join.jpg 885w,
+/static/7ec4e9c98a6895fa31b4df9455ce5d6a/a2510/pulp_join.jpg 1000w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Checking some things !!]]></title><description><![CDATA[This is just for checking styling of some stuff. Quoted Text This is just some random garbage to check the working of I don’t know what…]]></description><link>https://guptaparas.in/checking-things/</link><guid isPermaLink="false">https://guptaparas.in/checking-things/</guid><pubDate>Thu, 28 May 2020 22:40:32 GMT</pubDate><content:encoded>&lt;h3&gt;This is just for checking styling of some stuff.&lt;/h3&gt;
+&lt;h2&gt;Quoted Text&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is just some random garbage to check the working of I don’t know what.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://guptaparas.in&quot;&gt;&lt;strong&gt;My Site.&lt;/strong&gt;&lt;/a&gt;  
+&lt;a href=&quot;https://github.com/Parasgupta44&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;My GitHub.&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Bullets&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;This is useless.&lt;/li&gt;
+&lt;li&gt;This is useless.&lt;/li&gt;
+&lt;li&gt;This is useless.&lt;/li&gt;
+&lt;li&gt;This is useful.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Code Snippets&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h4&gt;React Component&lt;/h4&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Check for comments&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; React&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; useState &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;react&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;App&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; setValue&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;handleChange&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;setValue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;event&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;target&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;main&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Checking Stuff &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt; React&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;textarea value&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; onChange&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;handleChange&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; rows&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; cols&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;h2&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;h2&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;main&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h4&gt;Python Snippet&lt;/h4&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Check for comments&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; glob
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; numpy &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; np
+&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; tqdm &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; tqdm
+
+&lt;span class=&quot;token keyword&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&apos;Same Old Hello I Guess!&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h4&gt;Ruby Snippet&lt;/h4&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ruby&quot;&gt;&lt;pre class=&quot;language-ruby&quot;&gt;&lt;code class=&quot;language-ruby&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Check for comments&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;redcarpet&apos;&lt;/span&gt;
+mdx &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;Redcarpet&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;What&apos;s Ruby?&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+puts mdx&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;to_html&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h4&gt;CPP Snippet&lt;/h4&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;cpp&quot;&gt;&lt;pre class=&quot;language-cpp&quot;&gt;&lt;code class=&quot;language-cpp&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Check for comments&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;#&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&amp;lt;some_library&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;namespace&lt;/span&gt; std&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    cout &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;----------------&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;h3&gt;Check Tables&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;First Header&lt;/th&gt;
+&lt;th&gt;Second Header&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Some Content&lt;/td&gt;
+&lt;td&gt;More Content&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;You already know&lt;/td&gt;
+&lt;td&gt;Just type it in&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;TO-DOS&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; checked disabled&gt; Add blog and dark mode for it.&lt;/li&gt;
+&lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; disabled&gt; Migrate to TypeScript.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item></channel></rss>
