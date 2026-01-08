@@ -112,7 +112,7 @@ module.exports = {
       url: '/blogIndex/',
     },
   ],
-  curr_intro_brief: `I am working as a Software Engineer at Goldman Sachs, India. I received my Bachelor's of Technology from Punjab Engineering College, Chandigarh with majors in Computer Science (cliched intro done right ?)`,
+  curr_intro_brief: `I am working as a Software Engineer at Amazon, India. I received my Bachelor's of Technology from Punjab Engineering College, Chandigarh with majors in Computer Science (cliched intro done right ?)`,
   curr_intro: `I also interned with Goldman Sachs, Bengaluru from Jan 2020 to June 2020 as a Software Developer with the Corporate Treasury Team. There, I worked on a full stack project from scratch involving technologies like React JS, Redux JS, Flask, Fast API etc combined with Data Science elements.`,
   interest_areas: `Web and Backend development, FinTech, Deep Learning, Computer Vision`,
   curr_work_area: `Currently working on Python Web Frameworks, ReactJS.`,
